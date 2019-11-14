@@ -5,27 +5,12 @@ var mongoose = require("mongoose");
 var Campground = require("./models/campground");
 var seedDB = require("./seeds");
 
-seedDB();
 
 mongoose.connect("mongodb://localhost:27017/yelp_camp",{ useNewUrlParser: true, useUnifiedTopology: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+seedDB();
 
-
-
-// Campground.create(
-//     {
-//         name: "Kipling Camp", 
-//         image: "https://images.unsplash.com/photo-1526491109672-74740652b963?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-//         description: "Camping in the largest protected Tiger Reserve in the country has to be an unparalleled experience, right? The Kipling Camp is located in the Kanha National Park in Madhya Pradesh. This campsite is in the Satpura Hills refreshed by the water of the Narmada. Camping here lets you experience the dense wild forest and amazingly calm weather. The best thing to do here is to go bird watching or pursue a jungle safari. This one is a complete family vacation spot with the chance to make joyous memories."
-//     }, function(err, campground) {
-//         if(err) {
-//             console.log(err);
-//         } else {
-//             console.log("Newly Created Campground");
-//             console.log(campground);
-//         }
-// });
 
 app.get("/", function(req, res){
     res.render("landing");
@@ -69,10 +54,11 @@ app.get("/campgrounds/new", function(req, res) {
 // SHOW - Shows more info about one campground
 app.get("/campgrounds/:id", function(req, res) {
     //Find the campground with the provided ID
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err) {
             console.log(err);
         } else {
+            console.log(foundCampground);
             //Render show template with that campground
             res.render("show", {campground: foundCampground});
         }
