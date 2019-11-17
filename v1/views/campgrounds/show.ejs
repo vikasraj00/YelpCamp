@@ -22,26 +22,34 @@
             </div>
 
             <div class="card bg-light mb-3">
-                    <div class="card-body">
-                        <div class="card-header text-right">
-                            <a class="btn btn-success" href="/campgrounds/<%= campground.id %>/comments/new"> Add New Comment </a>
-                        </div>
-                        <% campground.comments.forEach(function(comment){ %>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <strong> <%= comment.author %> </strong>
-                                    <p class="card-text float-right">
-                                        <small class="text-muted"> 10 Days Ago </small>
-                                    </p>
-                                    <p class="card-text">
-                                        <%= comment.text %> 
-                                    </p>
-                                </div>
-                            </div>
-                        <% }); %>
+                <div class="card-body">
+                    <div class="text-right pb-1 pt-0">
+                        <a class="btn btn-success mr-2" href="/campgrounds/<%= campground.id %>/comments/new"> Add New Comment </a>
                     </div>
+                    <hr>
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <p class="card-text float-right">
+                                            <small class="text-muted"> 
+                                                10 Days Ago 
+                                            </small>
+                                        </p> 
+                                        <strong>
+                                            <%= comment.author %>
+                                        </strong> 
+                                        <p class="card-text">
+                                            <%= comment.text %> 
+                                        </p> 
+                                    </li>
+                                </ul>    
+                            </div>
+                        </div>
+                    <% }); %>
                 </div>
-            
+            </div>
         </div>
     </div>
 </div>
