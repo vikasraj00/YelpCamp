@@ -1,6 +1,9 @@
 var express    = require("express");
 var router     = express.Router();
+var mongoose   = require("mongoose");
 var Campground = require("../models/campground");
+
+mongoose.set('useFindAndModify', false);
 
 
 // INDEX - Show all Campgrounds
@@ -56,6 +59,29 @@ router.get("/:id", function(req, res) {
     }); 
 });
 
+// Edit Campground Route
+router.get("/:id/edit", function(req, res) {
+    Campground.findById(req.params.id, function(err, foundCampground) {
+        if(err) {
+            res.redirect("/campgrounds");
+        } else {
+            res.render("campgrounds/edit", {campground: foundCampground});
+        }
+    });
+});
+
+// Update Campground Route
+router.put("/:id", function(req, res) {
+    // Find and Update the Campground
+    Campground.findOneAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) {
+        if(err) {
+            res.redirect("/campgrounds");
+        } else {
+            // Redirect to Showpage
+            res.redirect("/campgrounds/" + req.params.id);
+        }
+    });
+});
 
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
