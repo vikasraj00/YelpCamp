@@ -29,7 +29,12 @@ router.post("/", isLoggedIn, function(req, res) {
             Comment.create(req.body.comment, function(err, comment){
                 if(err) {
                     console.log(err);
-                } else {    
+                } else { 
+                    // Add Username and ID to Comment 
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    // Save Comment   
+                    comment.save();
                     // Connect New Comment to Campground
                     campground.comments.push(comment);
                     campground.save();
