@@ -13,7 +13,7 @@ var express        = require("express"),
 // Requiring Routes    
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    IndexRoutes       = require("./routes/index")
+    IndexRoutes      = require("./routes/index")
 
 
 mongoose.connect("mongodb://localhost:27017/yelp_camp",{ useNewUrlParser: true, useUnifiedTopology: true});
