@@ -12,6 +12,7 @@ mongoose.set('useFindAndModify', false);
 // Comments Routes
 //======================
 
+// Comment New Route
 router.get("/new", middleware.isLoggedIn, function(req, res) {
     // Find Campground by ID 
     Campground.findById(req.params.id, function(err, campground){
@@ -23,6 +24,8 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
     });
 });
 
+
+// Comments Create Route
 router.post("/", middleware.isLoggedIn, function(req, res) {
     // Lookup Campgrounds using ID
     Campground.findById(req.params.id, function(err, campground){ 
@@ -33,6 +36,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
             // Create New Comment
             Comment.create(req.body.comment, function(err, comment){
                 if(err) {
+                    req.flash("error", "Something Went Wrong!");
                     console.log(err);
                 } else { 
                     // Add Username and ID to Comment 
@@ -43,6 +47,7 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
                     // Connect New Comment to Campground
                     campground.comments.push(comment);
                     campground.save();
+                    req.flash("success", "Comment Successfully Added");
                     // Redirect to Campground show page
                     res.redirect("/campgrounds/" + campground._id);
                 }
@@ -80,6 +85,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, re
         if(err) {
             res.redirect("back");
         } else {
+            req.flash("success", "Comment Successfully Deleted");
             res.redirect("/campgrounds/" + req.params.id);
         }
     });
