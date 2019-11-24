@@ -15,7 +15,7 @@
             <div class="card mb-3 mt-5">
                 <img class="card-img" src="<%= campground.image %>" alt="Campground Image">
                 <div class="card-body">
-                    <h4 class="float-right"> $9.00/Night </h4>
+                    <h4 class="float-right"> $<%= campground.price %>/night </h4>
                     <h4 class="card-title"> <a href="#"> <%= campground.name %> </a> </h4>
                     <p class="card-text"> <%= campground.description %> </p>
                     <p class="card-text"> <em> Submitted by <%= campground.author.username %> </em> </p>
