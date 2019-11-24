@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost:27017/yelp_camp",{ useNewUrlParser: true, 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); 
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method")); 
 // seedDB(); // seed the Database
 
 
@@ -41,7 +41,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(IndexRoutes);
+app.use("/", IndexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 

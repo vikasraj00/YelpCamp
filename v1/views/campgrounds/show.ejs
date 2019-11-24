@@ -53,7 +53,11 @@
                                         </strong> 
                                         <p class="card-text">
                                             <%= comment.text %> 
-                                        </p> 
+                                        </p>
+                                        <a class="btn btn-sm btn-outline-info py-0"
+                                            href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                                            Edit
+                                        </a> 
                                     </li>
                                 </ul>    
                             </div>
