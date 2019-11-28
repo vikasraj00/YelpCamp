@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/"> YelpCamp </a>
@@ -18,7 +18,7 @@
                     <li> <a href="/login" class="nav-link"> Log In </a> </li>
                     <li> <a href="/register" class="nav-link"> Sign Up </a> </li>
                 <% } else { %>
-                    <li> <a href="#"> Signed In As <%= currentUser.username %> </a> </li>
+                    <li class="mt-2 px-2"> <a href="#"> Signed In As <%= currentUser.username %> </a> </li>
                     <li> <a href="/logout" class="nav-link"> Log Out </a> </li>
                 <% } %> 
             </ul>
@@ -41,3 +41,5 @@
         </div>
     <% } %>
 </div>
+
+<div class="container">
