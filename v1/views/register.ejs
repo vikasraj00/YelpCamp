@@ -1,11 +1,59 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/register.css">
+    <script src="https://kit.fontawesome.com/45df12a3fb.js" crossorigin="anonymous"></script>
+    <title> YelpCamp </title>
+</head>
+    <body>
 
-<h1> Sign Up </h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/"> YelpCamp </a>
+                </div>
+            </div>
+        </nav>
 
-<form action="/register" method="POST">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button> Sign Up </button>
-</form>
-
-<% include ./partials/footer %>
+        <div class="container h-100 mt-5">
+            <div class="d-flex justify-content-center h-100">
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <div class="brand_logo_container">
+                            <img src="https://static.wixstatic.com/media/7216f6_b71ab8967eae4f78803bc07bf2ff8837~mv2.png/v1/fill/w_162,h_161,al_c,usm_0.66_1.00_0.01/signup.png" class="brand_logo" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center form_container">
+                        <form action="/register" method="POST">
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="username" class="form-control input_user" placeholder="Username">
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name="password" class="form-control input_pass" placeholder="Password">
+                            </div>
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button class="btn login_btn"> Sign Up </button>
+                            </div>
+                        </form>
+                    </div>
+            
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links">
+                            Already have an account? <a href="/login" class="ml-2"> Login </a>
+                        </div>
+                        <div class="d-flex justify-content-center links">
+                            <a href="/campgrounds">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
