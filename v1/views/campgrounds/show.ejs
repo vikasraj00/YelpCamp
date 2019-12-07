@@ -19,8 +19,11 @@
                     <h4 class="float-right"> $9.00/Night </h4>
                     <h4 class="card-title"> <a href="#"> <%= campground.name %> </a> </h4>
                     <p class="card-text"> <%= campground.description %> </p>
-                    <p class="card-text"> <em> Submitted by <%= campground.author.username %> </em> </p>
-                    <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+                    <p class="card-text">
+                        <em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %>
+                        </em>
+                    </p>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                         <a class="btn btn-warning btn-sm px-3" href="/campgrounds/<%= campground._id %>/edit "> 
                             Edit 
                         </a>
@@ -46,7 +49,7 @@
                                     <li class="list-group-item">
                                         <p class="card-text float-right">
                                             <small class="text-muted"> 
-                                                10 Days Ago 
+                                                <%= moment(comment.createdAt).fromNow() %>
                                             </small>
                                         </p> 
                                         <strong>
