@@ -14,3 +14,24 @@ body {
     height: 400px;
     width: 100%;
 }
+.checked {
+    color: orange;
+}
+
+/* Campground show page  */
+.fa-arrow-left {
+    margin-right: 5px;
+}
+
+#gobackshowpage {
+    margin-top: 10px;
+}
+/* Campground show page  */
+
+#ChangeReview {
+    margin-bottom: 30px;
+}
+
+#NewReview {
+    margin-bottom: 30px;
+}

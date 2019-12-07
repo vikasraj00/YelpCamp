@@ -13,11 +13,22 @@
 
     <div class="row text-center">
         <% campgrounds.forEach(function(campground){ %>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">   
                 <div class="card">
-                    <img src="<%= campground.image %>" alt="Campground Name" class="card-img-top">
+                    <img src="<%= campground.image %>" alt="Campground Image" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title"><%= campground.name %></h5>
+                        <% if (campground.rating === 0) { %>
+                            <p class="card-text">  <em> No reviews yet </em> </p>
+                        <% } else { %>
+                            <p class="card-text">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                                <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span> 
+                            </p>
+                        <% } %>
                         <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary"> More Info </a>
                     </div>
                 </div>

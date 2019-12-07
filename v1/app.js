@@ -11,10 +11,11 @@ var express          = require("express"),
     Campground       = require("./models/campground"),
     Comment          = require("./models/comment"),
     User             = require("./models/user")
-    // seedDB           = require("./seeds")
+    // seedDB        = require("./seeds")
 
 // Requiring Routes    
 var commentRoutes    = require("./routes/comments"),
+    reviewRoutes     = require("./routes/review"),
     campgroundRoutes = require("./routes/campgrounds"),
     IndexRoutes      = require("./routes/index")
 
@@ -50,6 +51,7 @@ app.use(function(req, res, next) {
 app.use("/", IndexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 
 // Server Listening on Port 3000

@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-
+        <!-- Left Panel -->
         <div class="col-md-3 mt-5">
             <div class="list-group">
                 <li class="list-group-item active"> Info 1 </li>
@@ -11,7 +11,7 @@
             </div>
             <div id="map"></div>
         </div>
-
+        <!-- Right Panel -->
         <div class="col-md-9">
             <div class="card mb-3 mt-5">
                 <img class="card-img" src="<%= campground.image %>" alt="Campground Image">
@@ -33,9 +33,74 @@
                             </button>
                         </form>
                     <% } %>
+                    <div id="gobackshowpage">
+                        <a class="btn btn-light" href="/campgrounds"><i class="fa fa-arrow-left"></i> Go back</a>
+                    </div>
                 </div>
             </div>
 
+            <!--Review section-->
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <% if (campground.rating === 0) { %>
+                    <div class="text-center">
+                        <h5>
+                                <em>No reviews yet.</em>
+                        </h5>
+                    </div>
+                    
+                    <% } else { %>
+                    <p class="text-center">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                        <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                        <em>(total reviews: <%= campground.reviews.length %>)</em>
+                    </p>
+                    <p><h4 class="text-center">Latest reviews for this campground:</h4></p>
+                    <hr>
+                    <% campground.reviews.slice(0, 5).forEach(function(review){ %>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%- '<span class="fa fa-star checked"></span>'.repeat(review.rating) %><%- '<span class="fa fa-star"></span>'.repeat(5 - review.rating) %>
+                            <div>Review by: <strong><%= review.author.username %></strong></div>
+                            <small class="text-muted">
+                               <em><%= moment(review.updatedAt).fromNow() %></em>
+                            </small>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <p class="text-right">
+                                <h5> 
+                                    <%= review.text %>
+                                </h5> 
+                            </p>
+                            <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-sm btn-outline-info py-0"
+                                href="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>/edit">
+                                Edit
+                            </a>
+                            <form id="delete-form" action="/campgrounds/<%=campground._id %>/reviews/<%=review._id %>?_method=DELETE" method="POST">
+                                <input type="submit" class="btn btn-sm btn-outline-danger py-0 ml-1" value="Delete">
+                            </form>
+                            <% } %>
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    <% }); %>
+                    <div class="d-inline float-right mt-1" >
+                        <h4><a href="/campgrounds/<%= campground._id %>/reviews"><i class="fa fa-search" aria-hidden="true"></i> See all reviews </a></h4>
+                    </div>
+                    <% } %>
+                    <div class="d-inline">
+                        <a class="btn btn-primary  <% if (currentUser && campground.reviews.some(function (review) {return review.author.id.equals(currentUser._id)})) { %> disabled <% } %>" href="/campgrounds/<%= campground._id %>/reviews/new">
+                            Write a New Review</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
             <div class="card bg-light mb-3">
                 <div class="card-body">
                     <div class="text-right pb-1 pt-0">
@@ -79,35 +144,35 @@
 </div>
 
 
-<script>
-  function initMap() {
-    var lat = <%= campground.lat %>;
-    var lng = <%= campground.lng %>;
-    var center = {lat: lat, lng: lng };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
-        center: center,
-        scrollwheel: false
-    });
-    var contentString = `
-      <strong><%= campground.name %><br />
-      <%= campground.location %></strong>
-      <p><%= campground.description %></p>
-    `
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-    var marker = new google.maps.Marker({
-        position: center,
-        map: map
-    });
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
-  }
-</script>
+// <script>
+//   function initMap() {
+//     var lat = <%= campground.lat %>;
+//     var lng = <%= campground.lng %>;
+//     var center = {lat: lat, lng: lng };
+//     var map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 8,
+//         center: center,
+//         scrollwheel: false
+//     });
+//     var contentString = `
+//       <strong><%= campground.name %><br />
+//       <%= campground.location %></strong>
+//       <p><%= campground.description %></p>
+//     `
+//     var infowindow = new google.maps.InfoWindow({
+//       content: contentString
+//     });
+//     var marker = new google.maps.Marker({
+//         position: center,
+//         map: map
+//     });
+//     marker.addListener('click', function() {
+//       infowindow.open(map, marker);
+//     });
+//   }
+// </script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_UvaG9w_tHWZvkkPLcXE4iR-7HSg6oL8&callback=initMap"
-type="text/javascript"></script>
+// <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_UvaG9w_tHWZvkkPLcXE4iR-7HSg6oL8&callback=initMap"
+// type="text/javascript"></script>
 
 <% include ../partials/footer %>
