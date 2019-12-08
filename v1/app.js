@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 var express          = require("express"),
     app              = express(),
     bodyParser       = require("body-parser"), 
@@ -56,5 +54,5 @@ app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 // Server Listening on Port 3000
 app.listen(3000, function(){
-    console.log("The YelpCamp Server Has Started on Port 3000");
+    console.log("Server is Listening on Port 3000");
 });
