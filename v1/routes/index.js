@@ -8,6 +8,11 @@ router.get("/", function(req, res){
     res.render("landing");
 });
 
+// Show About Form
+router.get("/about", function(req, res){
+    res.render("about");
+});
+
 // =====================
 // Authentication Routes
 //======================

@@ -2,8 +2,9 @@ var express    = require("express");
 var router     = express.Router();
 var mongoose   = require("mongoose");
 var Campground = require("../models/campground");
+var Comment    = require("../models/comment");
 var middleware = require("../middleware");
-var Review = require("../models/review");   
+var Review     = require("../models/review");   
 
 mongoose.set('useFindAndModify', false);
 
@@ -94,7 +95,7 @@ router.delete("/:id", middleware.checkCampgroundOwnership, function (req, res) {
             res.redirect("/campgrounds");
         } else {
             // deletes all comments associated with the campground
-            Comment.remove({"_id": {$in: campground.comments}}, function (err) {
+            Comment.deleteMany({"_id": {$in: campground.comments}}, function (err) {
                 if (err) {
                     console.log(err);
                     return res.redirect("/campgrounds");

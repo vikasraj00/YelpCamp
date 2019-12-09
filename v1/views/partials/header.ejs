@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>YelpCamp</title>
+    <title> YELPCAMP </title>
+    <link rel = "icon" href="https://images.vexels.com/media/users/3/127365/isolated/preview/3e345f10031bee2d27b1146c2c1a7f2a-camp-fire-icon-with-wood-logs-by-vexels.png" type = "image/x-icon"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/45df12a3fb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/"> YelpCamp </a>
-        </div>
-        <div class="collapse navbar-collapse">
+
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-primary py-1 fixed-top">
+    <div class="container">
+        <a class="navbar-brand pl-lg-2" href="/"> <i class="fas fa-campground"></i> YELPCAMP </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navLinks">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="/campgrounds"> HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about"> ABOUT <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <% if(!currentUser) { %>
-                    <li> <a href="/login" class="nav-link"> Log In </a> </li>
-                    <li> <a href="/register" class="nav-link"> Sign Up </a> </li>
+                    <li> <a href="/login" class="nav-link active"> LOGIN </a> </li>
+                    <li> <a href="/register" class="nav-link active"> SIGNUP </a> </li>
                 <% } else { %>
-                    <li> <a href="#"> Signed In As <%= currentUser.username %> </a> </li>
-                    <li> <a href="/logout" class="nav-link"> Log Out </a> </li>
+                    <li class="nav-item mt-2 mr-1"  style="color:white;"> Signed In As <a style="color:greenyellow;" href="#"> <%= currentUser.username %> </a> </li>
+                    <li> <a href="/logout" class="nav-link "> LOG OUT </a> </li>
                 <% } %> 
             </ul>
         </div>
     </div>
-</nav>
+</nav> 
 
 
 <div class="container">
@@ -42,3 +52,7 @@
         </div>
     <% } %>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

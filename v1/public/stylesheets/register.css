@@ -6,7 +6,7 @@ body,
         padding: 0;
         height: 100%;
         
-        background: pink;
+        background: white;
 
     }
     .user_card {
@@ -83,3 +83,10 @@ body,
     .fa-user {
         padding-right: 2px;
     }
+
+    body { padding-top: 60px; }
+
+    #signup-nav .nav-link:hover{
+        color: orange;
+    }
+    

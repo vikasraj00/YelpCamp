@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel = "icon" href="https://images.vexels.com/media/users/3/127365/isolated/preview/3e345f10031bee2d27b1146c2c1a7f2a-camp-fire-icon-with-wood-logs-by-vexels.png" type = "image/x-icon"> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/register.css">
     <script src="https://kit.fontawesome.com/45df12a3fb.js" crossorigin="anonymous"></script>
@@ -8,15 +9,22 @@
 </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
+        <nav id="signup-nav" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top py-1">
+            <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/"> YelpCamp </a>
+                    <a class="navbar-brand" href="/"> <i class="fas fa-campground"></i> YELPCAMP </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="/campgrounds"> HOME <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
-        <div class="container h-100 mt-5">
+        <div class="container h-100 mt-4">
             <div class="d-flex justify-content-center h-100">
                 <div class="user_card">
                     <div class="d-flex justify-content-center">
@@ -58,5 +66,8 @@
                 </div>
             </div>
         </div>
+        <em>
+            <p style="text-align: center;">&copy; YelpCamp 2020. All Rights Reserved</p>
+        </em>  
     </body>
 </html>
