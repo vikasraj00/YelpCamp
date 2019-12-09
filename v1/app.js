@@ -9,7 +9,6 @@ var express          = require("express"),
     Campground       = require("./models/campground"),
     Comment          = require("./models/comment"),
     User             = require("./models/user")
-    // seedDB        = require("./seeds")
 
 // Requiring Routes    
 var commentRoutes    = require("./routes/comments"),
@@ -24,7 +23,6 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public")); 
 app.use(methodOverride("_method"));
 app.use(flash()); 
-// seedDB(); // seed the Database
 app.locals.moment = require('moment');
 
 // Passport Configuration
