@@ -75,3 +75,14 @@ width: 25%;
 height: 25%;
 object-fit: cover;
 }
+
+.jumbotron {
+    text-align: center;
+    background-image: url(../images/Jumbotron-Image.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow:0px 3px 4px   rgba(0,0,0,0.4),
+                0px 8px 13px  rgba(0,0,0,0.1),
+                0px 18px 23px rgba(0,0,0,0.1);
+}

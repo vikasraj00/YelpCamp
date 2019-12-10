@@ -16,23 +16,33 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navLinks">
+            
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                 <a class="nav-link" href="/campgrounds"> HOME <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/about"> ABOUT <span class="sr-only">(current)</span></a>
-                </li>
+                </li>  
             </ul>
             <ul class="navbar-nav ml-auto">
+                <p>
+                    <form action="/campgrounds" method="GET" class="form-inline">
+                        <div class="form-group mr-3">
+                            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Campground search...">
+                            <input class="btn btn-danger my-2 my-sm-0" type="submit" value="Search">
+                        </div>
+                    </form>
+                </p>
                 <% if(!currentUser) { %>
                     <li> <a href="/login" class="nav-link active"> LOGIN </a> </li>
                     <li> <a href="/register" class="nav-link active"> SIGNUP </a> </li>
                 <% } else { %>
                     <li class="nav-item mt-2 mr-1"  style="color:white;"> Signed In As <a style="color:greenyellow;" href="#"> <%= currentUser.username %> </a> </li>
-                    <li> <a href="/logout" class="nav-link "> LOG OUT </a> </li>
+                    <li> <a href="/logout" class="nav-link active"> LOG OUT </a> </li>
                 <% } %> 
             </ul>
+            
         </div>
     </div>
 </nav> 
