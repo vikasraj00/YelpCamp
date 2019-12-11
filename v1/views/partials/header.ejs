@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-primary py-1 fixed-top">
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-primary py-1 fixed-top d-flex">
     <div class="container">
         <a class="navbar-brand pl-lg-2" href="/"> <i class="fas fa-campground"></i> YELPCAMP </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks">
@@ -27,9 +27,9 @@
             <ul class="navbar-nav ml-auto">
                 <p>
                     <form action="/campgrounds" method="GET" class="form-inline">
-                        <div class="form-group mr-3 d-none d-md-block">
-                            <input class="form-control" type="text" name="search" placeholder="Campground search...">
-                            <input class="btn btn-danger my-2 my-sm-0" type="submit" value="Search">
+                        <div class="form-group mr-3 d-none d-md-inline">
+                            <input class="form-control form-control-sm" type="text" name="search" placeholder="Campground search...">
+                            <input class="btn btn-danger btn-sm" type="submit" value="Search">
                         </div>
                     </form>
                 </p>
